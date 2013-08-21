@@ -1,0 +1,54 @@
+# TimeClock
+
+Calculate the amount of business time between two times based on any arbitrary work calendar.
+
+    Time.now.business_seconds_until(Time.now + 1.day)
+    => 43200
+    Time.now.business_minutes_until(Time.now + 1.day)
+    => 720
+    Time.now.business_hours_until(Time.now + 1.day)
+    => 12
+
+If you want to use a separate calendar for an individual calculation, use a `TimeClock::Comparison` instance. Look at the configuration example to understand how to build a calendar.
+
+    TimeClock::Comparison.new(Time.now, Time.now + 1.day, custom_calendar).seconds
+
+## Configuration
+
+Set a `default_calendar` for all comparisons to use for their calculation.
+
+For example, in a Rails initializer:
+
+    # Time zones aren't required. Used here to make it easier to read.
+    time_zone = ActiveSupport::TimeZone.new("America/Chicago")
+
+    # The TimeClock::Calendar object stores the shifts for the business calendar.
+    calendar = TimeClock::Calendar.new
+
+    # Add all the work days (or individual shifts) to the calendar
+    # This example adds non week days between 6am and 6pm.
+    (Date.new(2011,1,1)..Date.new(2015,1,1)).each do |date|
+      next unless (1..5).cover?(date.wday)
+      calendar.add_shift(
+        TimeClock::Shift.new(
+          time_zone.local(date.year,date.month,date.day,6),
+          time_zone.local(date.year,date.month,date.day,18),
+        )
+      )
+    end
+
+    # Set the default calendar
+    TimeClock.default_calendar = calendar
+
+## Installation
+
+    gem 'time_clock'
+
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
