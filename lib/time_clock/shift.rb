@@ -1,5 +1,6 @@
 module TimeClock
   class Shift
+
     class EndTimeAfterStartTimeError < ArgumentError; end
 
     attr_reader :start_time, :end_time
