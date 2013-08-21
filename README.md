@@ -21,6 +21,7 @@ You can also make custom calendars for each calculation (see Calendars section f
 - Extremely simple codebase. Only 80 lines of code.
 - Works with any kind of `Time`, including mixed types.
 - Easy to customize with totally custom business calendars.
+- [![Code Climate](https://codeclimate.com/repos/5214185789af7e04ce021d7b/badges/ebf8537627c6cc30178c/gpa.png)](https://codeclimate.com/repos/5214185789af7e04ce021d7b/feed)
 
 ## Configuration
 
