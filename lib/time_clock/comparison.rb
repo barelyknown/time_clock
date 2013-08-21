@@ -1,9 +1,12 @@
 module TimeClock
   class Comparison
 
+    class NilCalendarError < ArgumentError; end
+
     attr_reader :start_time, :end_time, :calendar
 
     def initialize(start_time, end_time, calendar=TimeClock.default_calendar)
+      raise NilCalendarError unless calendar
       @start_time, @end_time, @calendar = start_time, end_time, calendar
     end
 
