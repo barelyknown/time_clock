@@ -1,5 +1,6 @@
 module TimeClock
   class Calendar
+
     class OverlappingShiftError < ArgumentError; end
 
     attr_reader :shifts
