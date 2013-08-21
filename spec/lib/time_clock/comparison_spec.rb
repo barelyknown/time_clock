@@ -27,6 +27,14 @@ module TimeClock
       expect(subject.period).to eq Shift.new(start_time, end_time)
     end
 
+    context "when the start time is after the end time" do
+      let(:start_time) { Time.now + 3600 }
+      let(:end_time) { Time.now }
+      it "should create a shift with flipped around times" do
+        expect(subject.period).to eq Shift.new(end_time, start_time)
+      end
+    end
+
     context "when calculating seconds between" do
       let(:calendar) do
         Calendar.new.tap do |c|
