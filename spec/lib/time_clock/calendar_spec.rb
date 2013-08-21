@@ -43,7 +43,7 @@ module TimeClock
           expect{subject.add_shift(new_shift)}.to raise_error Calendar::OverlappingShiftError
         end
       end
-      
+
     end
 
   end
