@@ -1,8 +1,10 @@
 # TimeClock
 
+Calculate the amount of business time between two times based on any arbitrary work calendar.
+
     gem 'time_clock'
 
-Calculate the amount of business time between two times based on any arbitrary work calendar.
+Once you've set a default calendar, any `Time` instance will have a few helpful methods.
 
     Time.now.business_seconds_until(Time.now + 1.day)
     => 43200
@@ -11,7 +13,9 @@ Calculate the amount of business time between two times based on any arbitrary w
     Time.now.business_hours_until(Time.now + 1.day)
     => 12
 
-Things you may like about this library:
+You can also make custom calendars for each calculation (see Calendars section for details).
+
+**Things you may like about this library:**
 
 - No dependencies.
 - Extremely simple codebase. Only 80 lines of code.
