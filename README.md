@@ -1,5 +1,7 @@
 # TimeClock
 
+    gem 'time_clock'
+
 Calculate the amount of business time between two times based on any arbitrary work calendar.
 
     Time.now.business_seconds_until(Time.now + 1.day)
@@ -9,9 +11,12 @@ Calculate the amount of business time between two times based on any arbitrary w
     Time.now.business_hours_until(Time.now + 1.day)
     => 12
 
-If you want to use a separate calendar for an individual calculation, use a `TimeClock::Comparison` instance. Look at the configuration example to understand how to build a calendar.
+Things you may like about this library:
 
-    TimeClock::Comparison.new(Time.now, Time.now + 1.day, custom_calendar).seconds
+- No dependencies.
+- Extremely simple codebase. Only 80 lines of code.
+- Works with any kind of `Time`, including mixed types.
+- Easy to customize with totally custom business calendars.
 
 ## Configuration
 
@@ -40,10 +45,11 @@ For example, in a Rails initializer:
     # Set the default calendar
     TimeClock.default_calendar = calendar
 
-## Installation
+## Calendars
 
-    gem 'time_clock'
+If you want to use a separate calendar for an individual calculation, use a `TimeClock::Comparison` instance. Refer back to the configuration example to understand how to build a calendar.
 
+    TimeClock::Comparison.new(Time.now, Time.now + 1.day, custom_calendar).seconds
 
 ## Contributing
 
