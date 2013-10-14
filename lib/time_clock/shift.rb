@@ -7,7 +7,7 @@ module TimeClock
 
     def initialize(start_time, end_time)
       raise EndTimeAfterStartTimeError unless end_time > start_time
-      @start_time, @end_time = start_time, end_time
+      @start_time, @end_time = start_time.to_time, end_time.to_time
     end
 
     def overlaps?(shift)

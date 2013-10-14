@@ -7,7 +7,7 @@ module TimeClock
 
     def initialize(start_time, end_time, calendar=TimeClock.default_calendar)
       raise NilCalendarError unless calendar
-      @start_time, @end_time, @calendar = start_time, end_time, calendar
+      @start_time, @end_time, @calendar = start_time.to_time, end_time.to_time, calendar
     end
 
     def period
