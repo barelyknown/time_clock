@@ -1,7 +1,7 @@
 class Time
 
   def business_seconds_until(time)
-    TimeClock::Comparison.new(self, time).seconds.to_i
+    TimeClock::Comparison.new(self.to_time, time).seconds.to_i
   end
 
   def business_minutes_until(time)
