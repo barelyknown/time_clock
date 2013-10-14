@@ -1,5 +1,5 @@
 if defined?(ActiveSupport::TimeWithZone)
   class ActiveSupport::TimeWithZone
-    TimeClock::BusinessTimeUntil
+    include TimeClock::BusinessTimeUntil
   end
 end
