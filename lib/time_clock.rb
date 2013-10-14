@@ -4,6 +4,8 @@ require "time_clock/shift"
 require "time_clock/calendar"
 require "time_clock/comparison"
 
+require "time_clock/business_time_until"
+
 require "time_clock/core_ext/time"
 
 module TimeClock

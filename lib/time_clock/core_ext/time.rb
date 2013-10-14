@@ -1,15 +1,3 @@
 class Time
-
-  def business_seconds_until(time)
-    TimeClock::Comparison.new(self.to_time, time).seconds.to_i
-  end
-
-  def business_minutes_until(time)
-    (business_seconds_until(time).to_f / 60).ceil
-  end
-
-  def business_hours_until(time)
-    (business_seconds_until(time).to_f / 3600).ceil
-  end
-
+  include TimeClock::BusinessTimeUntil
 end
