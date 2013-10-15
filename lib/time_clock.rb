@@ -7,6 +7,7 @@ require "time_clock/comparison"
 require "time_clock/business_time_until"
 
 require "time_clock/core_ext/time"
+require "time_clock/core_ext/time_with_zone"
 
 module TimeClock
 
