@@ -13,6 +13,11 @@ Once you've set a default calendar, any `Time` instance will have a few helpful 
     Time.now.business_hours_until(Time.now + 1.day)
     => 12
 
+Also, `Date` and `Time` instances will have a method that calculates how many work dates there are between two times or dates.
+
+    Date.today.business_days_until(Date.today)
+    => 1
+
 You can also make custom calendars for each calculation (see Calendars section for details).
 
 **Things you may like about this library:**
