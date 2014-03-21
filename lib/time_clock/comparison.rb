@@ -7,7 +7,9 @@ module TimeClock
 
     def initialize(start_time, end_time, calendar=TimeClock.default_calendar)
       raise NilCalendarError unless calendar
-      @start_time, @end_time, @calendar = start_time.to_time, end_time.to_time, calendar
+      @start_time = start_time.to_time
+      @end_time = end_time_from_value(end_time)
+      @calendar = calendar
     end
 
     def period
@@ -20,7 +22,27 @@ module TimeClock
       end
     end
 
+    def days
+      dates = Set.new
+      calendar.shifts.each do |shift|
+        if period.overlapping_seconds(shift) > 0
+          dates.add shift.start_time.to_date
+          dates.add shift.end_time.to_date
+        end
+      end
+      dates.size
+    end
+
   private
+
+    def end_time_from_value(value)
+      case value
+      when Time, ActiveSupport::TimeWithZone
+        value.to_time
+      when Date
+        (value + 1).to_time
+      end
+    end
 
     def earlier_time
       start_time < end_time ? start_time : end_time

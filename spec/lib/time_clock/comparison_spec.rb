@@ -60,6 +60,17 @@ module TimeClock
         it "should calculate seconds between" do
           expect(subject.seconds).to eq 60 * 60 * 4
         end
+        it "should calculate days" do
+          expect(subject.days).to eq 1
+        end
+      end
+      context "when the times are across two days" do
+        let(:start_time) { Time.new(2013,8,20,10) }
+        let(:end_time) { Time.new(2013,8,21,14) }
+
+        it "should calculate days" do
+          expect(subject.days).to eq 2
+        end
       end
     end
 
