@@ -30,10 +30,10 @@ module TimeClock
       let(:overlapping_shift) { Shift.new(Time.new(2013,8,19,5), Time.new(2013,8,19,10)) }
       let(:non_overlapping_shift) { Shift.new(Time.new(2013,8,18,5), Time.new(2013,8,18,10)) }
       it "should know when it does" do
-        expect(overlapping_shift.overlaps?(subject)).to be_true
+        expect(overlapping_shift.overlaps?(subject)).to eq true
       end
       it "should know when it doesn't" do
-        expect(non_overlapping_shift.overlaps?(subject)).to_not be_true
+        expect(non_overlapping_shift.overlaps?(subject)).to_not eq true
       end
       it "should calculate the overlapping seconds when there is an overlap" do
         expect(overlapping_shift.overlapping_seconds(subject)).to eq 4 * 60 * 60

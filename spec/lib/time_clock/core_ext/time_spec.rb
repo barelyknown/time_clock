@@ -11,12 +11,12 @@ describe Time do
   end
 
   it "should calculate business minutes until" do
-    Time.any_instance.stub(:business_seconds_until) { 60 }
+    expect_any_instance_of(Time).to receive(:business_seconds_until).and_return(60)
     expect(subject.business_minutes_until(end_time)).to eq 1
   end
 
   it "should calculate business hours until" do
-    Time.any_instance.stub(:business_seconds_until) { 3500 }
+    expect_any_instance_of(Time).to receive(:business_seconds_until).and_return(3500)
     expect(subject.business_hours_until(end_time)).to eq 1
   end
 

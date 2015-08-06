@@ -36,9 +36,15 @@ module TimeClock
     end
 
     context "when there is no default calendar and none is provided" do
+      before do
+        @old_default_calendar = TimeClock.default_calendar
+        TimeClock.default_calendar = nil
+      end
       it "should raise an error on initialization" do
-        TimeClock.stub(:default_calendar) { nil }
         expect{described_class.new(start_time, end_time)}.to raise_error Comparison::NilCalendarError
+      end
+      after do
+        TimeClock.default_calendar = @old_default_calendar
       end
     end
 
